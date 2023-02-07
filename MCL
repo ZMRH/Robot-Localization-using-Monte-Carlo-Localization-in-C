@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 #include <time.h>
+#include <stdlib.h>
 
 #define NUM_PARTICLES 1000
 #define NUM_ITERATIONS 1000
