@@ -22,7 +22,7 @@ The following is a step-by-step implementation of Monte Carlo Localization in C:
 
 * The code uses a particle filter to represent the distribution of possible poses, and updates the particle distribution with each iteration of the algorithm.
 
-'''C
+```
 #include <stdio.h>
 #include <math.h>
 #include <time.h>
@@ -51,10 +51,10 @@ void prediction(double deltaX, double deltaY, double deltaTheta) {
   for (int i = 0; i < NUM_PARTICLES; i++) {
     double noiseX = (rand() / (double)RAND_MAX) * MOTION_NOISE;
 
-'''
+```
 
 * Initialize the particles randomly throughout the map. Each particle represents a possible location for the robot.
-'''
+```
 for (int i = 0; i < num_particles; i++) {
     particle[i].x = rand() % map_width;
     particle[i].y = rand() % map_height;
@@ -69,16 +69,16 @@ for (int i = 0; i < num_particles; i++) {
     particle[i].y += motion_model(control_inputs, particle[i].theta);
     particle[i].theta += motion_model(control_inputs, particle[i].theta);
 }
-'''
+```
 
 * Use the sensor measurements to update the weight of each particle. The weight represents the likelihood of the particle's location being the actual location of the robot.
-'''
+```
 for (int i = 0; i < num_particles; i++) {
     particle[i].weight *= sensor_model(sensor_measurements, particle[i].x, particle[i].y, particle[i].theta);
 }
-'''
+```
 * Normalize the weights so that they sum up to 1.
-'''
+```
 double sum_weights = 0.0;
 for (int i = 0; i < num_particles; i++) {
     sum_weights += particle[i].weight;
@@ -86,10 +86,10 @@ for (int i = 0; i < num_particles; i++) {
 for (int i = 0; i < num_particles; i++) {
     particle[i].weight /= sum_weights;
 }
-'''
+```
 
 * Resample the particles based on their weights. This step ensures that particles with higher weights are more likely to be selected, while particles with lower weights are less likely to be selected.
-'''
+```
 Particle new_particles[num_particles];
 int index = rand() % num_particles;
 double beta = 0.0;
@@ -104,6 +104,5 @@ for (int i = 0; i < num_particles; i++) {
         index = (index + 1) % num_particles;
     }
    
-'''
-
+```
 
