@@ -1,10 +1,10 @@
 # Robot-Localization-using-Monte-Carlo-Localization-in-C
 
-#Introduction
+# ntroduction
 
 Localization is a crucial task for mobile robots to understand their position in an environment.Robot localization is the process of determining the position and orientation of a robot in an environment. This is a crucial task for robots that operate autonomously, as it helps them understand their surroundings and make decisions about where to go and what to do.One popular method for robot localization is Monte Carlo Localization (MCL), which uses a probabilistic approach to estimate the robot's pose. This method uses a particle filter to represent the distribution of possible poses, and updates this distribution as the robot moves and senses its environment.Monte Carlo Localization (MCL) is a probabilistic approach to localize a robot based on sensor measurements and control inputs. It uses random sampling to estimate the position of the robot and updates the probability distribution over time.
 
-#Algorithm
+# Algorithm
 
 The algorithm of Monte Carlo Localization can be broken down into four steps:
 
@@ -16,7 +16,7 @@ Update: The robot's sensor measurements are used to update the probability of ea
 
 Resampling: Particles with a low probability are replaced by particles with high probability to maintain a high-density representation of the distribution.
 
-#Algorithm Implementation
+# Algorithm Implementation
 
 The following is a step-by-step implementation of Monte Carlo Localization in C:
 
