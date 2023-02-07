@@ -61,9 +61,9 @@ for (int i = 0; i < num_particles; i++) {
     particle[i].theta = rand() % 360;
     particle[i].weight = 1.0 / num_particles;
 }
-"'
+```
 * For each time step, update the particle's position based on the motion model and the control inputs.
-'''
+```
 for (int i = 0; i < num_particles; i++) {
     particle[i].x += motion_model(control_inputs, particle[i].theta);
     particle[i].y += motion_model(control_inputs, particle[i].theta);
