@@ -8,19 +8,20 @@ Localization is a crucial task for mobile robots to understand their position in
 
 The algorithm of Monte Carlo Localization can be broken down into four steps:
 
-Initialization: The initial position of the robot is uncertain, and the probability distribution over its possible positions is modeled as a set of samples (particles) representing different locations.
+* Initialization: The initial position of the robot is uncertain, and the probability distribution over its possible positions is modeled as a set of samples (particles) representing different locations.
 
-Prediction: The robot's motion model is used to predict the movement of particles from the current state to the next.
+ * Prediction: The robot's motion model is used to predict the movement of particles from the current state to the next.
 
-Update: The robot's sensor measurements are used to update the probability of each particle. Particles with a higher probability are more likely to be the actual position of the robot.
+* Update: The robot's sensor measurements are used to update the probability of each particle. Particles with a higher probability are more likely to be the actual position of the robot.
 
-Resampling: Particles with a low probability are replaced by particles with high probability to maintain a high-density representation of the distribution.
+* Resampling: Particles with a low probability are replaced by particles with high probability to maintain a high-density representation of the distribution.
 
 # Algorithm Implementation
 
 The following is a step-by-step implementation of Monte Carlo Localization in C:
 
-The code uses a particle filter to represent the distribution of possible poses, and updates the particle distribution with each iteration of the algorithm.
+* The code uses a particle filter to represent the distribution of possible poses, and updates the particle distribution with each iteration of the algorithm.
+
 #include <stdio.h>
 #include <math.h>
 #include <time.h>
@@ -50,7 +51,7 @@ void prediction(double deltaX, double deltaY, double deltaTheta) {
     double noiseX = (rand() / (double)RAND_MAX) * MOTION_NOISE;
 
 
-Initialize the particles randomly throughout the map. Each particle represents a possible location for the robot.
+* Initialize the particles randomly throughout the map. Each particle represents a possible location for the robot.
 
 for (int i = 0; i < num_particles; i++) {
     particle[i].x = rand() % map_width;
@@ -59,7 +60,7 @@ for (int i = 0; i < num_particles; i++) {
     particle[i].weight = 1.0 / num_particles;
 }
 
-For each time step, update the particle's position based on the motion model and the control inputs.
+* For each time step, update the particle's position based on the motion model and the control inputs.
 
 for (int i = 0; i < num_particles; i++) {
     particle[i].x += motion_model(control_inputs, particle[i].theta);
@@ -68,13 +69,13 @@ for (int i = 0; i < num_particles; i++) {
 }
 
 
-Use the sensor measurements to update the weight of each particle. The weight represents the likelihood of the particle's location being the actual location of the robot.
+* Use the sensor measurements to update the weight of each particle. The weight represents the likelihood of the particle's location being the actual location of the robot.
 
 for (int i = 0; i < num_particles; i++) {
     particle[i].weight *= sensor_model(sensor_measurements, particle[i].x, particle[i].y, particle[i].theta);
 }
 
-Normalize the weights so that they sum up to 1.
+* Normalize the weights so that they sum up to 1.
 
 double sum_weights = 0.0;
 for (int i = 0; i < num_particles; i++) {
@@ -85,7 +86,7 @@ for (int i = 0; i < num_particles; i++) {
 }
 
 
-Resample the particles based on their weights. This step ensures that particles with higher weights are more likely to be selected, while particles with lower weights are less likely to be selected.
+* Resample the particles based on their weights. This step ensures that particles with higher weights are more likely to be selected, while particles with lower weights are less likely to be selected.
 
 Particle new_particles[num_particles];
 int index = rand() % num_particles;
