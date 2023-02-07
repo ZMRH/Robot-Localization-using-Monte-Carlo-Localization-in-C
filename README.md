@@ -21,8 +21,8 @@ The algorithm of Monte Carlo Localization can be broken down into four steps:
 The following is a step-by-step implementation of Monte Carlo Localization in C:
 
 * The code uses a particle filter to represent the distribution of possible poses, and updates the particle distribution with each iteration of the algorithm.
-* 
-'''
+
+'''C
 #include <stdio.h>
 #include <math.h>
 #include <time.h>
