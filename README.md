@@ -106,3 +106,8 @@ for (int i = 0; i < num_particles; i++) {
    
 ```
 
+##Conclusion
+
+In conclusion, Monte Carlo Localization is a widely used algorithm for robot localization that provides an efficient and probabilistic approach to estimate the position of a robot in an environment. In this readme, we have discussed the basics of robot localization and the Monte Carlo Localization algorithm, and provided a detailed explanation of its implementation using a C program.
+
+By utilizing random sampling and measurement updates, Monte Carlo Localization can estimate the position of a robot with high accuracy and robustness, making it a popular choice for a wide range of robotic applications. The provided code serves as a starting point for those interested in learning and implementing Monte Carlo Localization.
