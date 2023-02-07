@@ -21,8 +21,8 @@ The algorithm of Monte Carlo Localization can be broken down into four steps:
 The following is a step-by-step implementation of Monte Carlo Localization in C:
 
 * The code uses a particle filter to represent the distribution of possible poses, and updates the particle distribution with each iteration of the algorithm.
-
-''''
+* 
+'''
 #include <stdio.h>
 #include <math.h>
 #include <time.h>
@@ -51,7 +51,7 @@ void prediction(double deltaX, double deltaY, double deltaTheta) {
   for (int i = 0; i < NUM_PARTICLES; i++) {
     double noiseX = (rand() / (double)RAND_MAX) * MOTION_NOISE;
 
-''''
+'''
 
 * Initialize the particles randomly throughout the map. Each particle represents a possible location for the robot.
 '''
